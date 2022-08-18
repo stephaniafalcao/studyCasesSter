@@ -1,18 +1,18 @@
 version: "3.3"
 
 networks:
-  php-teste-ster-net:
+  php-study-case-net:
     driver: bridge
 
 services:
-  teste-ster-app:
+  study-case-app:
     build:
       context: .
       dockerfile: Dockerfile
-    image: php-teste-ster
-    container_name: php-teste-ster
+    image: php-study-case
+    container_name: php-study-case
     networks:
-      - php-teste-ster-net
+      - php-study-case-net
     ports:
       - 7100:80
     volumes:
