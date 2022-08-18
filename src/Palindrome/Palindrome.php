@@ -12,7 +12,7 @@ class Palindrome
         $this->word = $word;
     }
 
-    public function isItAPalindrome()
+    public function isItAPalindrome(): bool
     {
         $lowerWord = strtolower($this->word);
 

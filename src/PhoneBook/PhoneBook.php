@@ -7,25 +7,36 @@ class PhoneBook
     private array $phoneBook;
     
 
-    public function __construct()
+    public function __construct(array $list)
     {
-        $this->phoneBook = [];
+        $this->phoneBook = $list;
     }
 
-    public function searchPhoneNumber(string $name)
+    public function searchPhoneNumber(string $name): ?string
     {
-        return true;
+
+        foreach ($this->phoneBook as $key => $value)
+        {
+            if ($value['name'] == $name)
+            {
+                return $value['phone'];
+            }
+        }
+
+        return null;
     }
 
     public function generatePhoneBook()
     {
      
-        for ($i = 1; $i <= 1000; $i++) {
-            $phoneBook[] = [substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZ'),1,10), strval(rand())];
+        for ($i = 1; $i <= 10; $i++) {
+            $this->phoneBook[] = ['name' => substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ"),1,10), 'number' => strval(rand(9,9))];
         }
 
-        $phoneBook[] => ["Marina",strval(rand())];
+        $this->phoneBook[] = ['name' => "Marina", 'number' => strval(rand())];
 
-        return $phoneBook;
+        array_multisort(array_column($this->phoneBook, 'name'), SORT_ASC, $this->phoneBook);
+
+        return $this->phoneBook;
     }
 }
